@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -38,4 +38,3 @@ if (isset($_GET['page']))
 
 //Page title.
 define('PAGE_TITLE', get_pagetitle());
-?>

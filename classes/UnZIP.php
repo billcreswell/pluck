@@ -1,4 +1,5 @@
 <?php
+
 defined('IN_PLUCK') or exit('Access denied!');
 
 /**
@@ -51,7 +52,10 @@ defined('IN_PLUCK') or exit('Access denied!');
  				extension restricted apply while extraction
  */
 
+
 if(!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
+
+
 
 class UnZIP {
 
@@ -79,7 +83,7 @@ class UnZIP {
  *				programe will try to find from where the script run
  * @param text	Target location where to extract
  */
-	function __construct($p_source_zip_file=NULL, $p_target_location=NULL){
+    function __construct($p_source_zip_file=NULL, $p_target_location=NULL){
 		$this->log[]='init UNZIP class';
 		$this->file_extension_restricted_flag=false;
 		$unm=php_uname();
@@ -89,7 +93,7 @@ class UnZIP {
 		$this->setFlag4CNFBE(true);
 		$this->delTargetPathBeforeExtract(false);
 		$this->set($p_source_zip_file, $p_target_location);
-	}
+    }
 
 /**
  * Tell unzip program that extracted file extension need restriction
@@ -100,7 +104,7 @@ class UnZIP {
  *					true - allow
  *					false - not allowed/not extracted/skip extraction
  */
-	public function restrictedFileExtensions($p_file_extension_csv, $p_allow_file_without_extension=NULL){
+    public function restrictedFileExtensions($p_file_extension_csv, $p_allow_file_without_extension=NULL){
 		if(!empty($p_file_extension_csv)){
 			$f_file_extension_csv=explode(',', $p_file_extension_csv);
 			array_walk($f_file_extension_csv, create_function('&$val', '$val = strtolower(trim($val));'));
@@ -115,13 +119,13 @@ class UnZIP {
 		if(is_array($this->allowed_file_extensions) && count($this->allowed_file_extensions)>0) $this->file_extension_restricted_flag=true;
 		if(false==$this->allowed_file_without_extension) $this->file_extension_restricted_flag=true;
 		$this->log[]='file extension restricted flag enabled? '.(true==$this->file_extension_restricted_flag?'YES':'NO');
-	}
+    }
 
 /**
  * remove unzip program for any extension level restriction
  *
  */
-	public function removeFileExtensionRestriction(){
+public function removeFileExtensionRestriction(){
 		$this->file_extension_restricted_flag=false;
 		$this->allowed_file_without_extension=true;
 		unset($this->allowed_file_extensions);
@@ -187,7 +191,7 @@ class UnZIP {
 		$this->target=$trgtdir;
 		$this->log[]='set target location to unzip - '.$this->target;
 	}
-/**
+/*
  * tell class that the target or extracting location is absoulate or relative
  */
 	public function setTargetPathTypeAbsoulate(){
@@ -434,4 +438,3 @@ $zip->extract();
 
 var_dump($zip);
 */
-

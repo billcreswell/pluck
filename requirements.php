@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, a fork of Pluck, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -42,9 +42,9 @@ $titelkop = 'requirements check';
 include_once 'data/inc/header2.php';
 
 //1: Check for the the required PHP version.
-if (version_compare(PHP_VERSION, '5.2.0') !== 1) {
+if (version_compare(PHP_VERSION, '5.3.0') !== 1) {
 	$messages[] = array(
-		'text'  => 'pluck is only officially supported with PHP <strong>5.2.0</strong> or higher. Your version is: <strong>'.PHP_VERSION.'</strong>.',
+		'text'  => 'plucke is only officially supported with PHP <strong>5.3.0</strong> or higher. Your version is: <strong>'.PHP_VERSION.'</strong>.',
 		'class' => 1
 	);
 	$error = true;
@@ -118,4 +118,3 @@ else
 	echo '<p><strong>All requirements and settings are met. You can safely <a href="install.php">install pluck now</a>.</strong></p>';
 
 include_once 'data/inc/footer.php';
-?>

@@ -918,5 +918,3 @@ function _dirApp($d)
   }
 
 }
-
-?>

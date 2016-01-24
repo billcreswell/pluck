@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -17,6 +17,11 @@ define('IN_PLUCK', true);
 
 //Then start session support.
 session_start();
+
+require_once 'classes/Mlaphp/Autoloader.php';
+$autoloader = new \Mlaphp\Autoloader();
+spl_autoload_register(array($autoloader,'load'));
+
 
 //Include security-enhancements.
 require_once ('data/inc/security.php');

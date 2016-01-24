@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -137,4 +137,3 @@ if (isset($_POST['cont9']))
 	$cont9 = $_POST['cont9'];
 if (isset($_POST['cont10']))
 	$cont10 = $_POST['cont10'];
-?>

@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -56,9 +56,7 @@ if (isset($_POST ['submit'])) {
 				copy($_FILES['sendfile']['tmp_name'], $dir.'/'.$filename) or die ($lang['general']['upload_failed']);
 
 				if (strpos($filename, '.tar.gz')) {
-					//Then load the library for extracting the tar.gz-file.
-					require_once ('data/inc/lib/tarlib.class.php');
-
+					
 					//Load the tarfile.
 					$tar = new TarLib($dir.'/'.$filename);
 
@@ -67,16 +65,12 @@ if (isset($_POST ['submit'])) {
 					//After extraction: delete the tar.gz-file.
 					unlink($dir.'/'.$filename);
 					$dirtocreate = str_replace('.tar.gz', '', $filename);
-				}
-				else { //if not tar.gz then this file must be zip
-					//Then load the library for extracting the zip-file.
-					require_once ('data/inc/lib/unzip.class.php');
-
-					//Load the zipfile.
-					$zip=new UnZIP($dir.'/'.$filename);
-					//And extract it.
-					$zip->extract();
-
+				} else {
+                                    //if not tar.gz then this file must be zip
+                                    $zip = new UnZIP($dir.'/'.$filename);
+                                   //And extract it.
+                                    $zip->extract();
+                       
 					//After extraction: delete the zip-file.
 					unlink($dir.'/'.$filename);
 
@@ -101,4 +95,3 @@ if (isset($_POST ['submit'])) {
 		}
 	}
 }
-?>

@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, a fork of Pluck the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -26,6 +26,11 @@ if (!file_exists('data/settings/install.dat')) {
 	header('Location: install.php');
 	exit;
 }
+
+// psr0 autoloader
+require_once 'classes/Mlaphp/Autoloader.php';
+$autoloader = new \Mlaphp\Autoloader();
+spl_autoload_register(array($autoloader,'load'));
 
 //Include security-enhancements.
 require_once 'data/inc/security.php';

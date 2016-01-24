@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -82,4 +82,3 @@ if (!file_exists('data/settings/token.php') && is_writable('data/settings')) {
 	chmod('data/settings/token.php', 0777);
 	unset($token);
 }
-?>
