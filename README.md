@@ -1,11 +1,16 @@
-pluck
+plucke
 =====
 
-pluck · about pluck
+## plucke · about plucke
 
-Pluck is a small and simple content management system (CMS), written in PHP. With Pluck, you can easily manage your own website. Pluck focuses on simplicity and ease of use. This makes Pluck an excellent choice for every small website. Licensed under the General Public License (GPL), Pluck is completely open source. This allows you to do with the software whatever you want, as long as the software stays open source.
+Plucke is a fork of Pluck is a small and simple content management system (CMS), 
+written in PHP. With Pluck, you can easily manage your own website. 
+Pluck focuses on simplicity and ease of use. 
+This makes Pluck an excellent choice for every small website. 
+Licensed under the General Public License (GPL), Pluck is completely open source. 
+This allows you to do with the software whatever you want, as long as the software stays open source.
 
-Features
+## Features
 
 Pluck is packed with some nice features, from which we've listed the most important ones on this page. To try everything live, take a look at our demo http://pluck-cms.org/?file=demo
 

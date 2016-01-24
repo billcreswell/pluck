@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -10,26 +10,27 @@
  * (at your option) any later version.
 
  * See docs/COPYING for the complete license.
+ * 
 */
 
 //Make sure the file isn't accessed directly.
 defined('IN_PLUCK') or exit('Access denied!');
 
 require_once 'data/modules/albums/functions.php';
-require_once 'data/inc/lib/SmartImage.class.php';
 
 function albums_pages_admin() {
-	global $lang, $var1, $var2;
+    
+    global $lang, $var1, $var2;
 
-	$module_page_admin[] = array(
-		'func'  => 'albums',
-		'title' => $lang['albums']['title']
-	);
-	$module_page_admin[] = array(
-		'func'  => 'editalbum',
-		'title' => $lang['albums']['edit_album']
-	);
-	$module_page_admin[] = array(
+    $module_page_admin[] = array(
+	'func'  => 'albums',
+	'title' => $lang['albums']['title']
+    );
+    $module_page_admin[] = array(
+	'func'  => 'editalbum',
+	'title' => $lang['albums']['edit_album']
+    );
+    $module_page_admin[] = array(
 		'func'  => 'deletealbum',
 		'title' => $lang['albums']['delete_album']
 	);
@@ -234,11 +235,11 @@ function albums_page_admin_editalbum() {
 			<form method="post" action="" enctype="multipart/form-data">
 				<p>
 					<label class="kop2" for="cont1"><?php echo $lang['general']['title']; ?></label>
-					<input name="cont1" id="cont1" type="text" />
+					<input required='required' name="cont1" id="cont1" type="text" />
 				</p>
 				<p>
 					<label class="kop2" for="cont2"><?php echo $lang['general']['description']; ?></label>
-					<textarea cols="50" rows="5" name="cont2" id="cont2"></textarea>
+					<textarea required='required' cols="50" rows="5" name="cont2" id="cont2"></textarea>
 				</p>
 				<p>
 					<input type="file" name="imagefile" id="imagefile" />

@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of pluck, the easy content management system
+ * This file is part of plucke, the easy content management system
  * Copyright (c) pluck team
  * http://www.pluck-cms.org
 
@@ -25,60 +25,67 @@ define('NAME', 'image');
  * @param bool $only_return_title If set to TRUE, only the title will be returned (seoname will be discarded).
  * @return mixed
  */
-function albums_get_albums($only_return_title = FALSE) {
-	$files = read_dir_contents(ALBUMS_DIR, 'files');
+    function albums_get_albums($only_return_title = FALSE) {
+
+        $files = read_dir_contents(ALBUMS_DIR, 'files');
 
 	if ($files) {
-		natcasesort($files);
-		foreach ($files as $album) {
-			include(ALBUMS_DIR.'/'.$album);
-			if ($only_return_title == TRUE)
-				$albums[] = $album_name;
-			else {
-				$albums[] = array(
-					'title'   => $album_name,
-					'seoname' => str_replace('.php', '', $album)
-				);
-			}
-		}
-		unset($album);
+            natcasesort($files);
+            foreach ($files as $album) {
+                include(ALBUMS_DIR.'/'.$album);
+                if ($only_return_title == TRUE) {
+                    $albums[] = $album_name;
+                } else {
+                    $albums[] = array(
+                        'title'   => $album_name,
+                        'seoname' => str_replace('.php', '', $album)
+                    );
+                }
+            }
+		
+            unset($album);
 
-		return $albums;
-	}
-
-	else
-		return false;
-}
+            return $albums;
+            
+        } else {
+            return false;
+        }
+                
+    }
 
 /**
  * Loads images in an array. Will return FALSE if no images exist.
  * @param string $album The album to return the images from.
  * @return array The images, including information: title, info, seoname, filename and filename_image.
  */
-function albums_get_images($album) {
-	$files = read_dir_contents(ALBUMS_DIR.'/'.$album, 'files');
-	if (!$files)
-		return FALSE;
-
-	elseif ($files) {
-		natcasesort($files);
-		foreach ($files as $file) {
-			$parts = explode('.', $file);
-			if (count($parts) == 4) {
-				list($number, $fdirname, $ext, $php) = $parts;
-				include_once (ALBUMS_DIR.'/'.$album.'/'.$file);
-				$images[] = array(
-					'title'          => $name,
-					'info'           => $info,
-					'seoname'        => $fdirname,
-					'filename'       => $file,
-					'filename_image' => $fdirname.'.'.$ext
-				);
-			}
+    function albums_get_images($album) {
+        $images = array();
+        $files = read_dir_contents(ALBUMS_DIR.'/'.$album, 'files');
+        if (!$files) {
+            return FALSE;
+        } elseif ($files) {
+            print_r($files);
+            natcasesort($files);
+            
+            foreach ($files as $file) {
+            
+                $parts = explode('.', $file);
+               
+                if (count($parts) == 4) {
+                    list($number, $fdirname, $ext, $php) = $parts;
+		    include_once (ALBUMS_DIR.'/'.$album.'/'.$file);
+                    $images[] = array(
+			'title'          => $name,
+			'info'           => $info,
+			'seoname'        => $fdirname,
+			'filename'       => $file,
+                        'filename_image' => $fdirname.'.'.$ext
+                    );
 		}
-		unset($file);
-
-		return $images;
+            }
+            unset($file);
+            return $images;
+            
 	}
 }
 
